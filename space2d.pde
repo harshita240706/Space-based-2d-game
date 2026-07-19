@@ -2,16 +2,15 @@ import processing.serial.*;
 
 Serial myPort;
 
-// -----------------------------
-// Joystick Values
-// -----------------------------
+
+
+
 int joyX = 512;
 int joyY = 512;
 int button = 0;
 
-// -----------------------------
 // Player
-// -----------------------------
+
 float playerX;
 float playerY;
 
@@ -22,21 +21,21 @@ int score = 0;
 
 boolean gameOver = false;
 
-// -----------------------------
-// Arrays
-// -----------------------------
+
+
+
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
-// -----------------------------
+
 // Enemy Spawn
-// -----------------------------
+
 int spawnTimer = 0;
 int spawnDelay = 40;
 
-// -----------------------------
+
 // Fire Delay
-// -----------------------------
+
 int fireDelay = 0;
 
 void setup()
@@ -242,9 +241,7 @@ void updateLED() {
     myPort.write('R');
 }
 
-// -----------------------------
-// Move Player
-// -----------------------------
+
 void movePlayer()
 {
   if(joyX<400)
@@ -263,9 +260,6 @@ void movePlayer()
   playerY=constrain(playerY,25,height-25);
 }
 
-// -----------------------------
-// Draw Spaceship
-// -----------------------------
 void drawPlayer()
 {
   pushMatrix();
@@ -295,9 +289,7 @@ void drawPlayer()
   popMatrix();
 }
 
-// -----------------------------
-// Draw HUD
-// -----------------------------
+
 void drawHUD()
 {
   fill(255);
@@ -324,9 +316,6 @@ void drawHUD()
   rect(20,50,health*2,20);
 }
 
-// -----------------------------
-// Stars
-// -----------------------------
 void drawStars()
 {
   stroke(255);
@@ -339,9 +328,6 @@ void drawStars()
   noStroke();
 }
 
-// -----------------------------
-// Serial Receive
-// -----------------------------
 void serialEvent(Serial p)
 {
   String data=p.readStringUntil('\n');
@@ -361,9 +347,7 @@ void serialEvent(Serial p)
   }
 }
 
-// -----------------------------
-// Restart
-// -----------------------------
+
 void keyPressed()
 {
   if(gameOver && (key=='r'||key=='R'))
